@@ -3,6 +3,7 @@ title: Yoto
 description: Instructions on how to integrate Yoto players with Home Assistant.
 ha_category:
   - Media Player
+  - Sensor
 ha_iot_class: Cloud Push
 ha_release: 2026.6
 ha_quality_scale: bronze
@@ -13,11 +14,12 @@ ha_codeowners:
 ha_domain: yoto
 ha_platforms:
   - media_player
+  - sensor
 ha_integration_type: hub
 ha_dhcp: true
 ---
 
-The **Yoto** {% term integration %} lets you control your [Yoto](https://yotoplay.com) audio players from Home Assistant. You can play and pause cards, change the volume, skip tracks, seek within a track, see what is currently playing, and browse your card library to start a specific card, chapter, or track.
+The **Yoto** {% term integration %} lets you control your [Yoto](https://yotoplay.com) audio players from Home Assistant. You can play and pause cards, change the volume, skip tracks, seek within a track, see what is currently playing, and browse your card library to start a specific card, chapter, or track. You can also monitor each player's battery level, what is loaded in the card slot, and its Wi-Fi connection.
 
 The integration talks to the official Yoto cloud over OAuth2 and receives playback updates over MQTT, so changes that happen on the player show up in Home Assistant almost immediately. Online and offline detection still relies on the cloud API and can lag by up to 5 minutes.
 
@@ -63,6 +65,8 @@ During setup, Home Assistant opens the Yoto authorization page so you can grant 
 
 ## Supported functionality
 
+### Media player
+
 The integration provides one media player entity per Yoto player. Each entity supports:
 
 - Play, pause, and stop
@@ -93,6 +97,20 @@ data:
   media_content_type: "music"
   media_content_id: "yoto://card/abc123/01/02"
 ```
+
+### Sensors
+
+Each Yoto player also provides several sensors:
+
+- **Battery**: the player's battery charge.
+- **Card slot**: what is loaded in the player, such as a physical card or streaming content.
+- **Day mode**: whether the player is in day or night mode.
+
+These diagnostic sensors are also available:
+
+- **Power source**: how the player is currently powered.
+- **SSID**: the Wi-Fi network the player is connected to.
+- **Wi-Fi RSSI**: the Wi-Fi signal strength. Disabled by default.
 
 ## Data updates
 
