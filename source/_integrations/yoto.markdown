@@ -2,7 +2,7 @@
 title: Yoto
 description: Instructions on how to integrate Yoto players with Home Assistant.
 ha_category:
-  - Binary sensor
+  - Binary Sensor
   - Media Player
 ha_iot_class: Cloud Push
 ha_release: 2026.6
