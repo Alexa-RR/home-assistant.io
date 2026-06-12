@@ -2,6 +2,7 @@
 title: Yoto
 description: Instructions on how to integrate Yoto players with Home Assistant.
 ha_category:
+  - Binary sensor
   - Media Player
 ha_iot_class: Cloud Push
 ha_release: 2026.6
@@ -12,6 +13,7 @@ ha_codeowners:
   - '@piitaya'
 ha_domain: yoto
 ha_platforms:
+  - binary_sensor
   - media_player
 ha_integration_type: hub
 ha_dhcp: true
@@ -63,6 +65,8 @@ During setup, Home Assistant opens the Yoto authorization page so you can grant 
 
 ## Supported functionality
 
+### Media player
+
 The integration provides one media player entity per Yoto player. Each entity supports:
 
 - Play, pause, and stop
@@ -93,6 +97,14 @@ data:
   media_content_type: "music"
   media_content_id: "yoto://card/abc123/01/02"
 ```
+
+### Binary sensors
+
+Each Yoto player also provides several binary sensors:
+
+- **Charging**: whether the player's battery is charging.
+- **Headphones**: whether headphones are connected to the player.
+- **Bluetooth audio**: whether a Bluetooth audio device is connected to the player.
 
 ## Data updates
 
